@@ -48,6 +48,7 @@ type ResUsers struct {
 	Date                          *Time      `xmlrpc:"date,omptempty"`
 	Debit                         *Float     `xmlrpc:"debit,omptempty"`
 	DebitLimit                    *Float     `xmlrpc:"debit_limit,omptempty"`
+	DeviceIdentityIds             *Relation  `xmlrpc:"device_identity_ids,omptempty"`
 	DisplayName                   *String    `xmlrpc:"display_name,omptempty"`
 	Email                         *String    `xmlrpc:"email,omptempty"`
 	EmailFormatted                *String    `xmlrpc:"email_formatted,omptempty"`
@@ -72,11 +73,7 @@ type ResUsers struct {
 	LogIds                        *Relation  `xmlrpc:"log_ids,omptempty"`
 	Login                         *String    `xmlrpc:"login,omptempty"`
 	LoginDate                     *Time      `xmlrpc:"login_date,omptempty"`
-	MachineCompanyName            *String    `xmlrpc:"machine_company_name,omptempty"`
-	MachineUserEmail              *String    `xmlrpc:"machine_user_email,omptempty"`
-	MachineUserLogin              *String    `xmlrpc:"machine_user_login,omptempty"`
-	MeetingCount                  *Int       `xmlrpc:"meeting_count,omptempty"`
-	MeetingIds                    *Relation  `xmlrpc:"meeting_ids,omptempty"`
+	LoyaltyPoints                 *Float     `xmlrpc:"loyalty_points,omptempty"`
 	MessageBounce                 *Int       `xmlrpc:"message_bounce,omptempty"`
 	MessageChannelIds             *Relation  `xmlrpc:"message_channel_ids,omptempty"`
 	MessageFollowerIds            *Relation  `xmlrpc:"message_follower_ids,omptempty"`
@@ -92,24 +89,28 @@ type ResUsers struct {
 	Name                          *String    `xmlrpc:"name,omptempty"`
 	NewPassword                   *String    `xmlrpc:"new_password,omptempty"`
 	NotificationType              *Selection `xmlrpc:"notification_type,omptempty"`
-	OpportunityCount              *Int       `xmlrpc:"opportunity_count,omptempty"`
-	OpportunityIds                *Relation  `xmlrpc:"opportunity_ids,omptempty"`
+	OauthUid                      *String    `xmlrpc:"oauth_uid,omptempty"`
+	OdooComUid                    *String    `xmlrpc:"odoo_com_uid,omptempty"`
 	OptOut                        *Bool      `xmlrpc:"opt_out,omptempty"`
 	ParentId                      *Many2One  `xmlrpc:"parent_id,omptempty"`
 	ParentName                    *String    `xmlrpc:"parent_name,omptempty"`
 	PartnerId                     *Many2One  `xmlrpc:"partner_id,omptempty"`
+	PartnerLedgerLabel            *String    `xmlrpc:"partner_ledger_label,omptempty"`
 	PartnerShare                  *Bool      `xmlrpc:"partner_share,omptempty"`
 	Password                      *String    `xmlrpc:"password,omptempty"`
 	PasswordCrypt                 *String    `xmlrpc:"password_crypt,omptempty"`
+	PaymentNextAction             *String    `xmlrpc:"payment_next_action,omptempty"`
+	PaymentNextActionDate         *Time      `xmlrpc:"payment_next_action_date,omptempty"`
 	PaymentTokenCount             *Int       `xmlrpc:"payment_token_count,omptempty"`
 	PaymentTokenIds               *Relation  `xmlrpc:"payment_token_ids,omptempty"`
 	Phone                         *String    `xmlrpc:"phone,omptempty"`
 	PickingWarn                   *Selection `xmlrpc:"picking_warn,omptempty"`
 	PickingWarnMsg                *String    `xmlrpc:"picking_warn_msg,omptempty"`
+	PosOrderCount                 *Int       `xmlrpc:"pos_order_count,omptempty"`
+	PosSecurityPin                *String    `xmlrpc:"pos_security_pin,omptempty"`
 	PropertyAccountPayableId      *Many2One  `xmlrpc:"property_account_payable_id,omptempty"`
 	PropertyAccountPositionId     *Many2One  `xmlrpc:"property_account_position_id,omptempty"`
 	PropertyAccountReceivableId   *Many2One  `xmlrpc:"property_account_receivable_id,omptempty"`
-	PropertyAutosalesConfig       *Many2One  `xmlrpc:"property_autosales_config,omptempty"`
 	PropertyPaymentTermId         *Many2One  `xmlrpc:"property_payment_term_id,omptempty"`
 	PropertyProductPricelist      *Many2One  `xmlrpc:"property_product_pricelist,omptempty"`
 	PropertyPurchaseCurrencyId    *Many2One  `xmlrpc:"property_purchase_currency_id,omptempty"`
@@ -123,11 +124,6 @@ type ResUsers struct {
 	RefCompanyIds                 *Relation  `xmlrpc:"ref_company_ids,omptempty"`
 	ResourceCalendarId            *Many2One  `xmlrpc:"resource_calendar_id,omptempty"`
 	ResourceIds                   *Relation  `xmlrpc:"resource_ids,omptempty"`
-	SaleOrderCount                *Int       `xmlrpc:"sale_order_count,omptempty"`
-	SaleOrderIds                  *Relation  `xmlrpc:"sale_order_ids,omptempty"`
-	SaleTeamId                    *Many2One  `xmlrpc:"sale_team_id,omptempty"`
-	SaleWarn                      *Selection `xmlrpc:"sale_warn,omptempty"`
-	SaleWarnMsg                   *String    `xmlrpc:"sale_warn_msg,omptempty"`
 	Self                          *Many2One  `xmlrpc:"self,omptempty"`
 	Share                         *Bool      `xmlrpc:"share,omptempty"`
 	Signature                     *String    `xmlrpc:"signature,omptempty"`
@@ -143,18 +139,14 @@ type ResUsers struct {
 	Street2                       *String    `xmlrpc:"street2,omptempty"`
 	Supplier                      *Bool      `xmlrpc:"supplier,omptempty"`
 	SupplierInvoiceCount          *Int       `xmlrpc:"supplier_invoice_count,omptempty"`
-	TargetSalesDone               *Int       `xmlrpc:"target_sales_done,omptempty"`
-	TargetSalesInvoiced           *Int       `xmlrpc:"target_sales_invoiced,omptempty"`
-	TargetSalesWon                *Int       `xmlrpc:"target_sales_won,omptempty"`
-	TaskCount                     *Int       `xmlrpc:"task_count,omptempty"`
-	TaskIds                       *Relation  `xmlrpc:"task_ids,omptempty"`
-	TeamId                        *Many2One  `xmlrpc:"team_id,omptempty"`
 	Title                         *Many2One  `xmlrpc:"title,omptempty"`
+	TotalDue                      *Float     `xmlrpc:"total_due,omptempty"`
 	TotalInvoiced                 *Float     `xmlrpc:"total_invoiced,omptempty"`
 	Trust                         *Selection `xmlrpc:"trust,omptempty"`
 	Type                          *Selection `xmlrpc:"type,omptempty"`
 	Tz                            *Selection `xmlrpc:"tz,omptempty"`
 	TzOffset                      *String    `xmlrpc:"tz_offset,omptempty"`
+	UnreconciledAmlIds            *Relation  `xmlrpc:"unreconciled_aml_ids,omptempty"`
 	UserId                        *Many2One  `xmlrpc:"user_id,omptempty"`
 	UserIds                       *Relation  `xmlrpc:"user_ids,omptempty"`
 	Vat                           *String    `xmlrpc:"vat,omptempty"`

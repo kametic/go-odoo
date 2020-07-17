@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-// IrModel represents ir.model model
+// IrModel represents ir.model model.
 type IrModel struct {
 	LastUpdate        *Time      `xmlrpc:"__last_update,omptempty"`
 	AccessIds         *Relation  `xmlrpc:"access_ids,omptempty"`
@@ -16,10 +16,10 @@ type IrModel struct {
 	Id                *Int       `xmlrpc:"id,omptempty"`
 	Info              *String    `xmlrpc:"info,omptempty"`
 	InheritedModelIds *Relation  `xmlrpc:"inherited_model_ids,omptempty"`
+	IsMailThread      *Bool      `xmlrpc:"is_mail_thread,omptempty"`
 	Model             *String    `xmlrpc:"model,omptempty"`
 	Modules           *String    `xmlrpc:"modules,omptempty"`
 	Name              *String    `xmlrpc:"name,omptempty"`
-	RuleIds           *Relation  `xmlrpc:"rule_ids,omptempty"`
 	State             *Selection `xmlrpc:"state,omptempty"`
 	Transient         *Bool      `xmlrpc:"transient,omptempty"`
 	ViewIds           *Relation  `xmlrpc:"view_ids,omptempty"`
@@ -27,18 +27,23 @@ type IrModel struct {
 	WriteUid          *Many2One  `xmlrpc:"write_uid,omptempty"`
 }
 
-// IrModels represents array of ir.model model
+// IrModels represents array of ir.model model.
 type IrModels []IrModel
 
-// IrModelModel is the odoo model name
+// IrModelModel is the odoo model name.
 const IrModelModel = "ir.model"
+
+// Many2One convert IrModel to *Many2One.
+func (im *IrModel) Many2One() *Many2One {
+	return NewMany2One(im.Id.Get(), "")
+}
 
 // CreateIrModel creates a new ir.model model and returns its id.
 func (c *Client) CreateIrModel(im *IrModel) (int64, error) {
 	return c.Create(IrModelModel, im)
 }
 
-// UpdateIrModel pdates an existing ir.model record.
+// UpdateIrModel updates an existing ir.model record.
 func (c *Client) UpdateIrModel(im *IrModel) error {
 	return c.UpdateIrModels([]int64{im.Id.Get()}, im)
 }
@@ -68,7 +73,7 @@ func (c *Client) GetIrModel(id int64) (*IrModel, error) {
 	if ims != nil && len(*ims) > 0 {
 		return &((*ims)[0]), nil
 	}
-	return nil, fmt.Errorf("id %v of %s not found", id, IrModelModel)
+	return nil, fmt.Errorf("id %v of ir.model not found", id)
 }
 
 // GetIrModels gets ir.model existing records.
@@ -80,6 +85,18 @@ func (c *Client) GetIrModels(ids []int64) (*IrModels, error) {
 	return ims, nil
 }
 
+// FindIrModel finds ir.model record by querying it with criteria.
+func (c *Client) FindIrModel(criteria *Criteria) (*IrModel, error) {
+	ims := &IrModels{}
+	if err := c.SearchRead(IrModelModel, criteria, NewOptions().Limit(1), ims); err != nil {
+		return nil, err
+	}
+	if ims != nil && len(*ims) > 0 {
+		return &((*ims)[0]), nil
+	}
+	return nil, fmt.Errorf("ir.model was not found")
+}
+
 // FindIrModels finds ir.model records by querying it
 // and filtering it with criteria and options.
 func (c *Client) FindIrModels(criteria *Criteria, options *Options) (*IrModels, error) {
@@ -88,4 +105,26 @@ func (c *Client) FindIrModels(criteria *Criteria, options *Options) (*IrModels, 
 		return nil, err
 	}
 	return ims, nil
+}
+
+// FindIrModelIds finds records ids by querying it
+// and filtering it with criteria and options.
+func (c *Client) FindIrModelIds(criteria *Criteria, options *Options) ([]int64, error) {
+	ids, err := c.Search(IrModelModel, criteria, options)
+	if err != nil {
+		return []int64{}, err
+	}
+	return ids, nil
+}
+
+// FindIrModelId finds record id by querying it with criteria.
+func (c *Client) FindIrModelId(criteria *Criteria, options *Options) (int64, error) {
+	ids, err := c.Search(IrModelModel, criteria, options)
+	if err != nil {
+		return -1, err
+	}
+	if len(ids) > 0 {
+		return ids[0], nil
+	}
+	return -1, fmt.Errorf("ir.model was not found")
 }

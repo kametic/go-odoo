@@ -11,7 +11,6 @@ type AccountAnalyticAccount struct {
 	Balance                  *Float    `xmlrpc:"balance,omptempty"`
 	Code                     *String   `xmlrpc:"code,omptempty"`
 	CompanyId                *Many2One `xmlrpc:"company_id,omptempty"`
-	CompanyUomId             *Many2One `xmlrpc:"company_uom_id,omptempty"`
 	CreateDate               *Time     `xmlrpc:"create_date,omptempty"`
 	CreateUid                *Many2One `xmlrpc:"create_uid,omptempty"`
 	Credit                   *Float    `xmlrpc:"credit,omptempty"`
@@ -20,7 +19,6 @@ type AccountAnalyticAccount struct {
 	DisplayName              *String   `xmlrpc:"display_name,omptempty"`
 	Id                       *Int      `xmlrpc:"id,omptempty"`
 	LineIds                  *Relation `xmlrpc:"line_ids,omptempty"`
-	MachineProjectName       *String   `xmlrpc:"machine_project_name,omptempty"`
 	MessageChannelIds        *Relation `xmlrpc:"message_channel_ids,omptempty"`
 	MessageFollowerIds       *Relation `xmlrpc:"message_follower_ids,omptempty"`
 	MessageIds               *Relation `xmlrpc:"message_ids,omptempty"`
@@ -33,9 +31,6 @@ type AccountAnalyticAccount struct {
 	MessageUnreadCounter     *Int      `xmlrpc:"message_unread_counter,omptempty"`
 	Name                     *String   `xmlrpc:"name,omptempty"`
 	PartnerId                *Many2One `xmlrpc:"partner_id,omptempty"`
-	ProjectCount             *Int      `xmlrpc:"project_count,omptempty"`
-	ProjectCreated           *Bool     `xmlrpc:"project_created,omptempty"`
-	ProjectIds               *Relation `xmlrpc:"project_ids,omptempty"`
 	TagIds                   *Relation `xmlrpc:"tag_ids,omptempty"`
 	WebsiteMessageIds        *Relation `xmlrpc:"website_message_ids,omptempty"`
 	WriteDate                *Time     `xmlrpc:"write_date,omptempty"`

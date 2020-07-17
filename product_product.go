@@ -16,6 +16,7 @@ type ProductProduct struct {
 	ActivityUserId                         *Many2One  `xmlrpc:"activity_user_id,omptempty"`
 	AttributeLineIds                       *Relation  `xmlrpc:"attribute_line_ids,omptempty"`
 	AttributeValueIds                      *Relation  `xmlrpc:"attribute_value_ids,omptempty"`
+	AvailableInPos                         *Bool      `xmlrpc:"available_in_pos,omptempty"`
 	Barcode                                *String    `xmlrpc:"barcode,omptempty"`
 	CategId                                *Many2One  `xmlrpc:"categ_id,omptempty"`
 	Code                                   *String    `xmlrpc:"code,omptempty"`
@@ -33,14 +34,12 @@ type ProductProduct struct {
 	DescriptionPurchase                    *String    `xmlrpc:"description_purchase,omptempty"`
 	DescriptionSale                        *String    `xmlrpc:"description_sale,omptempty"`
 	DisplayName                            *String    `xmlrpc:"display_name,omptempty"`
-	ExpensePolicy                          *Selection `xmlrpc:"expense_policy,omptempty"`
 	Id                                     *Int       `xmlrpc:"id,omptempty"`
 	Image                                  *String    `xmlrpc:"image,omptempty"`
 	ImageMedium                            *String    `xmlrpc:"image_medium,omptempty"`
 	ImageSmall                             *String    `xmlrpc:"image_small,omptempty"`
 	ImageVariant                           *String    `xmlrpc:"image_variant,omptempty"`
 	IncomingQty                            *Float     `xmlrpc:"incoming_qty,omptempty"`
-	InvoicePolicy                          *Selection `xmlrpc:"invoice_policy,omptempty"`
 	IsProductVariant                       *Bool      `xmlrpc:"is_product_variant,omptempty"`
 	ItemIds                                *Relation  `xmlrpc:"item_ids,omptempty"`
 	ListPrice                              *Float     `xmlrpc:"list_price,omptempty"`
@@ -62,6 +61,7 @@ type ProductProduct struct {
 	OutgoingQty                            *Float     `xmlrpc:"outgoing_qty,omptempty"`
 	PackagingIds                           *Relation  `xmlrpc:"packaging_ids,omptempty"`
 	PartnerRef                             *String    `xmlrpc:"partner_ref,omptempty"`
+	PosCategId                             *Many2One  `xmlrpc:"pos_categ_id,omptempty"`
 	Price                                  *Float     `xmlrpc:"price,omptempty"`
 	PriceExtra                             *Float     `xmlrpc:"price_extra,omptempty"`
 	PricelistId                            *Many2One  `xmlrpc:"pricelist_id,omptempty"`
@@ -70,7 +70,6 @@ type ProductProduct struct {
 	ProductVariantCount                    *Int       `xmlrpc:"product_variant_count,omptempty"`
 	ProductVariantId                       *Many2One  `xmlrpc:"product_variant_id,omptempty"`
 	ProductVariantIds                      *Relation  `xmlrpc:"product_variant_ids,omptempty"`
-	ProjectId                              *Many2One  `xmlrpc:"project_id,omptempty"`
 	PropertyAccountCreditorPriceDifference *Many2One  `xmlrpc:"property_account_creditor_price_difference,omptempty"`
 	PropertyAccountExpenseId               *Many2One  `xmlrpc:"property_account_expense_id,omptempty"`
 	PropertyAccountIncomeId                *Many2One  `xmlrpc:"property_account_income_id,omptempty"`
@@ -94,15 +93,9 @@ type ProductProduct struct {
 	RouteFromCategIds                      *Relation  `xmlrpc:"route_from_categ_ids,omptempty"`
 	RouteIds                               *Relation  `xmlrpc:"route_ids,omptempty"`
 	SaleDelay                              *Float     `xmlrpc:"sale_delay,omptempty"`
-	SaleLineWarn                           *Selection `xmlrpc:"sale_line_warn,omptempty"`
-	SaleLineWarnMsg                        *String    `xmlrpc:"sale_line_warn_msg,omptempty"`
 	SaleOk                                 *Bool      `xmlrpc:"sale_ok,omptempty"`
-	SalesCount                             *Int       `xmlrpc:"sales_count,omptempty"`
 	SellerIds                              *Relation  `xmlrpc:"seller_ids,omptempty"`
 	Sequence                               *Int       `xmlrpc:"sequence,omptempty"`
-	ServicePolicy                          *Selection `xmlrpc:"service_policy,omptempty"`
-	ServiceTracking                        *Selection `xmlrpc:"service_tracking,omptempty"`
-	ServiceType                            *Selection `xmlrpc:"service_type,omptempty"`
 	StandardPrice                          *Float     `xmlrpc:"standard_price,omptempty"`
 	StockFifoManualMoveIds                 *Relation  `xmlrpc:"stock_fifo_manual_move_ids,omptempty"`
 	StockFifoRealTimeAmlIds                *Relation  `xmlrpc:"stock_fifo_real_time_aml_ids,omptempty"`
@@ -111,6 +104,7 @@ type ProductProduct struct {
 	StockValue                             *Float     `xmlrpc:"stock_value,omptempty"`
 	SupplierTaxesId                        *Relation  `xmlrpc:"supplier_taxes_id,omptempty"`
 	TaxesId                                *Relation  `xmlrpc:"taxes_id,omptempty"`
+	ToWeight                               *Bool      `xmlrpc:"to_weight,omptempty"`
 	Tracking                               *Selection `xmlrpc:"tracking,omptempty"`
 	Type                                   *Selection `xmlrpc:"type,omptempty"`
 	UomId                                  *Many2One  `xmlrpc:"uom_id,omptempty"`

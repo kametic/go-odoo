@@ -7,12 +7,10 @@ import (
 // ResCompany represents res.company model.
 type ResCompany struct {
 	LastUpdate                        *Time      `xmlrpc:"__last_update,omptempty"`
-	AccountInInvoiceNote              *String    `xmlrpc:"account_in_invoice_note,omptempty"`
 	AccountNo                         *String    `xmlrpc:"account_no,omptempty"`
 	AccountOpeningDate                *Time      `xmlrpc:"account_opening_date,omptempty"`
 	AccountOpeningJournalId           *Many2One  `xmlrpc:"account_opening_journal_id,omptempty"`
 	AccountOpeningMoveId              *Many2One  `xmlrpc:"account_opening_move_id,omptempty"`
-	AccountOutInvoiceNote             *String    `xmlrpc:"account_out_invoice_note,omptempty"`
 	AccountSetupBankDataDone          *Bool      `xmlrpc:"account_setup_bank_data_done,omptempty"`
 	AccountSetupBarClosed             *Bool      `xmlrpc:"account_setup_bar_closed,omptempty"`
 	AccountSetupCoaDone               *Bool      `xmlrpc:"account_setup_coa_done,omptempty"`
@@ -34,6 +32,10 @@ type ResCompany struct {
 	CreateUid                         *Many2One  `xmlrpc:"create_uid,omptempty"`
 	CurrencyExchangeJournalId         *Many2One  `xmlrpc:"currency_exchange_journal_id,omptempty"`
 	CurrencyId                        *Many2One  `xmlrpc:"currency_id,omptempty"`
+	CurrencyIntervalUnit              *Selection `xmlrpc:"currency_interval_unit,omptempty"`
+	CurrencyNextExecutionDate         *Time      `xmlrpc:"currency_next_execution_date,omptempty"`
+	CurrencyProvider                  *Selection `xmlrpc:"currency_provider,omptempty"`
+	DaysBetweenTwoFollowups           *Int       `xmlrpc:"days_between_two_followups,omptempty"`
 	DisplayName                       *String    `xmlrpc:"display_name,omptempty"`
 	Email                             *String    `xmlrpc:"email,omptempty"`
 	ExpectsChartOfAccounts            *Bool      `xmlrpc:"expects_chart_of_accounts,omptempty"`
@@ -45,8 +47,7 @@ type ResCompany struct {
 	Id                                *Int       `xmlrpc:"id,omptempty"`
 	IncomeCurrencyExchangeAccountId   *Many2One  `xmlrpc:"income_currency_exchange_account_id,omptempty"`
 	InternalTransitLocationId         *Many2One  `xmlrpc:"internal_transit_location_id,omptempty"`
-	LeaveTimesheetProjectId           *Many2One  `xmlrpc:"leave_timesheet_project_id,omptempty"`
-	LeaveTimesheetTaskId              *Many2One  `xmlrpc:"leave_timesheet_task_id,omptempty"`
+	LastCurrencySyncDate              *Time      `xmlrpc:"last_currency_sync_date,omptempty"`
 	Logo                              *String    `xmlrpc:"logo,omptempty"`
 	LogoWeb                           *String    `xmlrpc:"logo_web,omptempty"`
 	Name                              *String    `xmlrpc:"name,omptempty"`
@@ -60,7 +61,6 @@ type ResCompany struct {
 	PoDoubleValidationAmount          *Float     `xmlrpc:"po_double_validation_amount,omptempty"`
 	PoLead                            *Float     `xmlrpc:"po_lead,omptempty"`
 	PoLock                            *Selection `xmlrpc:"po_lock,omptempty"`
-	ProjectTimeModeId                 *Many2One  `xmlrpc:"project_time_mode_id,omptempty"`
 	PropagationMinimumDelta           *Int       `xmlrpc:"propagation_minimum_delta,omptempty"`
 	PropertyStockAccountInputCategId  *Many2One  `xmlrpc:"property_stock_account_input_categ_id,omptempty"`
 	PropertyStockAccountOutputCategId *Many2One  `xmlrpc:"property_stock_account_output_categ_id,omptempty"`
@@ -69,8 +69,10 @@ type ResCompany struct {
 	ReportHeader                      *String    `xmlrpc:"report_header,omptempty"`
 	ResourceCalendarId                *Many2One  `xmlrpc:"resource_calendar_id,omptempty"`
 	ResourceCalendarIds               *Relation  `xmlrpc:"resource_calendar_ids,omptempty"`
-	SaleNote                          *String    `xmlrpc:"sale_note,omptempty"`
-	SecurityLead                      *Float     `xmlrpc:"security_lead,omptempty"`
+	SepaInitiatingPartyName           *String    `xmlrpc:"sepa_initiating_party_name,omptempty"`
+	SepaOrgidId                       *String    `xmlrpc:"sepa_orgid_id,omptempty"`
+	SepaOrgidIssr                     *String    `xmlrpc:"sepa_orgid_issr,omptempty"`
+	SepaPainVersion                   *Selection `xmlrpc:"sepa_pain_version,omptempty"`
 	Sequence                          *Int       `xmlrpc:"sequence,omptempty"`
 	Siret                             *String    `xmlrpc:"siret,omptempty"`
 	SocialFacebook                    *String    `xmlrpc:"social_facebook,omptempty"`
@@ -92,6 +94,10 @@ type ResCompany struct {
 	Website                           *String    `xmlrpc:"website,omptempty"`
 	WriteDate                         *Time      `xmlrpc:"write_date,omptempty"`
 	WriteUid                          *Many2One  `xmlrpc:"write_uid,omptempty"`
+	YodleeAccessToken                 *String    `xmlrpc:"yodlee_access_token,omptempty"`
+	YodleeUserAccessToken             *String    `xmlrpc:"yodlee_user_access_token,omptempty"`
+	YodleeUserLogin                   *String    `xmlrpc:"yodlee_user_login,omptempty"`
+	YodleeUserPassword                *String    `xmlrpc:"yodlee_user_password,omptempty"`
 	Zip                               *String    `xmlrpc:"zip,omptempty"`
 }
 

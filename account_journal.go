@@ -8,13 +8,17 @@ import (
 type AccountJournal struct {
 	LastUpdate               *Time      `xmlrpc:"__last_update,omptempty"`
 	AccountControlIds        *Relation  `xmlrpc:"account_control_ids,omptempty"`
+	AccountOnlineJournalId   *Many2One  `xmlrpc:"account_online_journal_id,omptempty"`
+	AccountOnlineProviderId  *Many2One  `xmlrpc:"account_online_provider_id,omptempty"`
 	AccountSetupBankDataDone *Bool      `xmlrpc:"account_setup_bank_data_done,omptempty"`
 	Active                   *Bool      `xmlrpc:"active,omptempty"`
+	AmountAuthorizedDiff     *Float     `xmlrpc:"amount_authorized_diff,omptempty"`
 	AtLeastOneInbound        *Bool      `xmlrpc:"at_least_one_inbound,omptempty"`
 	AtLeastOneOutbound       *Bool      `xmlrpc:"at_least_one_outbound,omptempty"`
 	BankAccNumber            *String    `xmlrpc:"bank_acc_number,omptempty"`
 	BankAccountId            *Many2One  `xmlrpc:"bank_account_id,omptempty"`
 	BankId                   *Many2One  `xmlrpc:"bank_id,omptempty"`
+	BankStatementCreation    *Selection `xmlrpc:"bank_statement_creation,omptempty"`
 	BankStatementsSource     *Selection `xmlrpc:"bank_statements_source,omptempty"`
 	BelongsToCompany         *Bool      `xmlrpc:"belongs_to_company,omptempty"`
 	Code                     *String    `xmlrpc:"code,omptempty"`
@@ -29,11 +33,14 @@ type AccountJournal struct {
 	GroupInvoiceLines        *Bool      `xmlrpc:"group_invoice_lines,omptempty"`
 	Id                       *Int       `xmlrpc:"id,omptempty"`
 	InboundPaymentMethodIds  *Relation  `xmlrpc:"inbound_payment_method_ids,omptempty"`
+	JournalUser              *Bool      `xmlrpc:"journal_user,omptempty"`
 	KanbanDashboard          *String    `xmlrpc:"kanban_dashboard,omptempty"`
 	KanbanDashboardGraph     *String    `xmlrpc:"kanban_dashboard_graph,omptempty"`
 	LossAccountId            *Many2One  `xmlrpc:"loss_account_id,omptempty"`
 	Name                     *String    `xmlrpc:"name,omptempty"`
+	NextSynchronization      *Time      `xmlrpc:"next_synchronization,omptempty"`
 	OutboundPaymentMethodIds *Relation  `xmlrpc:"outbound_payment_method_ids,omptempty"`
+	PosMercuryConfigId       *Many2One  `xmlrpc:"pos_mercury_config_id,omptempty"`
 	ProfitAccountId          *Many2One  `xmlrpc:"profit_account_id,omptempty"`
 	RefundSequence           *Bool      `xmlrpc:"refund_sequence,omptempty"`
 	RefundSequenceId         *Many2One  `xmlrpc:"refund_sequence_id,omptempty"`
@@ -42,6 +49,7 @@ type AccountJournal struct {
 	SequenceId               *Many2One  `xmlrpc:"sequence_id,omptempty"`
 	SequenceNumberNext       *Int       `xmlrpc:"sequence_number_next,omptempty"`
 	ShowOnDashboard          *Bool      `xmlrpc:"show_on_dashboard,omptempty"`
+	SynchronizationStatus    *String    `xmlrpc:"synchronization_status,omptempty"`
 	Type                     *Selection `xmlrpc:"type,omptempty"`
 	TypeControlIds           *Relation  `xmlrpc:"type_control_ids,omptempty"`
 	UpdatePosted             *Bool      `xmlrpc:"update_posted,omptempty"`
